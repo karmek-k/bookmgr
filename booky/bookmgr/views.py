@@ -1,5 +1,9 @@
 from django.shortcuts import render
+from django.views import generic
+
+from .models import Book
 
 
-def index(request):
-    return render(request, 'shared/base.html', {})
+class IndexView(generic.ListView):
+    template_name = 'bookmgr/index.html'
+    queryset = Book.objects.all()
