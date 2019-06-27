@@ -10,3 +10,8 @@ class IndexView(generic.ListView):
     
     def get_queryset(self):
         return Book.objects.all()
+
+
+class BookDetailView(generic.DetailView):
+    model = Book
+    template_name = 'bookmgr/detail.html'

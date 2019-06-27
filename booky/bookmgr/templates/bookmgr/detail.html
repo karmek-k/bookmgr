@@ -1,0 +1,18 @@
+{% extends 'shared/base.html' %}
+
+{% block title %}
+Book detail - Booky
+{% endblock %}
+
+{% block intro %}
+<h1>Book detail</h1>
+{% endblock %}
+
+{% block content %}
+<p>
+    <b>Title</b><br/>
+    {{ object.title }}<br/><br/>
+    <b>Description</b><br/>
+    {{ object.description }}<br/><br/>
+</p>
+{% endblock %}
