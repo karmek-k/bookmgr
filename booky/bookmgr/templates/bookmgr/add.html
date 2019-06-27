@@ -1,0 +1,27 @@
+{% extends 'shared/base.html' %}
+
+{% block title %}
+Add a book - Booky
+{% endblock %}
+
+{% block intro %}
+<h1>Add a book</h1>
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="add_book">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input class="form-control" id="title" name="title"/>
+    </div>
+    <div class="form-group">
+        <label for="textarea">Description</label>
+        <textarea class="form-control" id="textarea" rows="3"></textarea>
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="has-been-read" name="has-been-read"/>
+        <label class="form-check-label" for="has-been-read">Has been read?</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

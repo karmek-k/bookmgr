@@ -15,3 +15,7 @@ class IndexView(generic.ListView):
 class BookDetailView(generic.DetailView):
     model = Book
     template_name = 'bookmgr/detail.html'
+
+
+def book_add(request):
+    return render(request, "bookmgr/add.html")
