@@ -19,9 +19,24 @@ Home - Booky
         </tr>
     </thead>
     <tbody>
+        {% if books %}
+        {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>
+                {% if book.has_been_read %}
+                Yes
+                {% else %}
+                No
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
         <tr>
             <td>No books</td>
         </tr>
+        {% endif %}
     </tbody>
 </table>
 {% endblock %}

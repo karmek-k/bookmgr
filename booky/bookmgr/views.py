@@ -6,4 +6,7 @@ from .models import Book
 
 class IndexView(generic.ListView):
     template_name = 'bookmgr/index.html'
-    queryset = Book.objects.all()
+    context_object_name = 'books'
+    
+    def get_queryset(self):
+        return Book.objects.all()
