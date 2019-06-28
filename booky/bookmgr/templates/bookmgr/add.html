@@ -9,17 +9,18 @@ Add a book - Booky
 {% endblock %}
 
 {% block content %}
-<form method="POST" action="add_book">
+<form method="POST" action="{% url 'bookmgr:add' %}">
+    {% csrf_token %}
     <div class="form-group">
         <label for="title">Title</label>
-        <input class="form-control" id="title" name="title"/>
+        <input type="text" class="form-control" id="title" name="title"/>
     </div>
     <div class="form-group">
         <label for="textarea">Description</label>
-        <textarea class="form-control" id="textarea" rows="3"></textarea>
+        <textarea class="form-control" id="textarea" rows="3" name="description"></textarea>
     </div>
     <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="has-been-read" name="has-been-read"/>
+        <input type="checkbox" class="form-check-input" id="has-been-read" name="has_been_read"/>
         <label class="form-check-label" for="has-been-read">Has been read?</label>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>

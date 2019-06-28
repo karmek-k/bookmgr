@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 
 from .models import Book
+from .forms import BookForm
 
 
 class IndexView(generic.ListView):
@@ -18,4 +19,11 @@ class BookDetailView(generic.DetailView):
 
 
 def book_add(request):
+    if request.method == 'POST':
+        """Submit the book"""
+        form = BookForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+        return redirect('bookmgr:index')
+
     return render(request, "bookmgr/add.html")
