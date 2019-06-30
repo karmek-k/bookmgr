@@ -27,3 +27,7 @@ def book_add(request):
         return redirect('bookmgr:index')
 
     return render(request, "bookmgr/add.html")
+
+
+def book_delete_confirm(request, pk):
+    return render(request, 'bookmgr/delete_confirm.html')
