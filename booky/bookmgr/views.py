@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import generic
+from django.urls import reverse_lazy
 
 from .models import Book
 from .forms import BookForm
@@ -29,5 +30,7 @@ def book_add(request):
     return render(request, "bookmgr/add.html")
 
 
-def book_delete_confirm(request, pk):
-    return render(request, 'bookmgr/delete_confirm.html')
+class BookDeleteView(generic.DeleteView):
+    template_name = 'bookmgr/delete.html'
+    model = Book
+    success_url = reverse_lazy('bookmgr:index')

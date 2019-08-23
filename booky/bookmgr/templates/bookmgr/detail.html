@@ -15,6 +15,6 @@ Book detail - Booky
     <b>Description</b><br/>
     {{ object.description }}<br/><br/>
     <a class="btn btn-primary" href="#" role="button">Edit info</a>
-    <a class="btn btn-danger" href="#" role="button">Delete</a>
+    <a class="btn btn-danger" href="{% url 'bookmgr:delete' object.id %}" role="button">Delete</a>
 </p>
 {% endblock %}
