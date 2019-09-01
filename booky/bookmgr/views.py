@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.urls import reverse_lazy
 
@@ -34,3 +34,14 @@ class BookDeleteView(generic.DeleteView):
     template_name = 'bookmgr/delete.html'
     model = Book
     success_url = reverse_lazy('bookmgr:index')
+
+
+def book_edit(request, pk):
+    if request.method == 'POST':
+        book = get_object_or_404(Book, pk=pk)
+        form = BookForm(request.POST or None, instance=book)
+        if form.is_valid():
+            form.save()
+        return redirect('bookmgr:index')
+    
+    return render(request, 'bookmgr/edit.html', {'pk': pk})
